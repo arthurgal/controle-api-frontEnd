@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <header>
+      <NavegadorPrincipal />
+    </header>
+  </div>
+  <div>
+    <FormularioDespesas @despesaSalva="listarDespesas"/>
+  </div>
+  <div>
+    <ListaDespesa/>
+  </div>
+  <div>
+    <FooterBar/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavegadorPrincipal from "./components/NavegadorPrincipal.vue";
+import FormularioDespesas from "./components/FormularioDespesas.vue";
+import FooterBar from "./components/FooterBar.vue";
+import ListaDespesa from "./components/ListaDespesa.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    NavegadorPrincipal,
+    FormularioDespesas,
+    FooterBar,
+    ListaDespesa
+  },
+  methods:{
+    listarDespesas(){
+      console.log('opa')
+    }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
