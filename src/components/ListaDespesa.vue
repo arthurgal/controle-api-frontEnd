@@ -15,7 +15,11 @@
           <td>{{ despesa.dataDeCadastro }}</td>
           <td>{{ despesa.observacao }}</td>
           <td>{{ despesa.valor }}</td>
-          <td><button @click="deletar(despesa)">Apagar</button></td>
+          <td>
+            <button @click="deletar(despesa)" class="btn btn-outline-danger btn-sm">
+              Apagar
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -25,7 +29,7 @@
 <script>
 import Despesa from "../services/Despesas";
 export default {
-  name:'ListaDespesa',
+  name: "ListaDespesa",
   data() {
     return {
       despesas: [],
@@ -38,11 +42,11 @@ export default {
       });
     },
 
-    deletar(despesa){
-      Despesa.deletar(despesa.id).then(() =>{
+    deletar(despesa) {
+      Despesa.deletar(despesa.id).then(() => {
         this.listar();
-      })
-    }
+      });
+    },
   },
   mounted() {
     this.listar();
@@ -60,4 +64,5 @@ div {
 table {
   text-align: center;
 }
+
 </style>

@@ -15,11 +15,10 @@ export default {
 <style scoped>
     footer{
         display: block;
-        margin-top: 4rem;
         text-align: center;
         color: aliceblue;
         width: 100%;
-        height: 150px;
+        height: 37px;
         background-color: blueviolet;
     }
 </style>

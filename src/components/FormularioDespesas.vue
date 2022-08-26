@@ -27,6 +27,8 @@
       <label for="exampleFormControlInput1">Valor da Despesa</label>
       <input
         type="number"
+        min="0"
+        step=".01"
         class="form-control"
         id="exampleFormControlInput1"
         placeholder="100,00"
@@ -79,7 +81,7 @@ export default {
     padding-top: 50px;
     padding-bottom: 30px;
     margin: auto;
-    width: 30%;
+    width: 45%;
  }
 
  label{
