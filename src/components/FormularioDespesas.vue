@@ -1,4 +1,5 @@
 <template>
+  <h1>Cadastre Sua Despesa</h1>
   <form class="formulario" @submit.prevent="salvar">
     
     <div class="form-group">
@@ -76,9 +77,16 @@ export default {
 </script>
 
 <style scoped>
+
+  h1{
+    padding: 2rem;
+    border-bottom: solid 3px rgb(237, 237, 237);
+    text-align: center;
+
+  }
  .formulario{
     align-items: center;
-    padding-top: 50px;
+    padding-top: 1.5rem;
     padding-bottom: 30px;
     margin: auto;
     width: 45%;

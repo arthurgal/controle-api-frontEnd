@@ -16,7 +16,7 @@
           <td>{{ despesa.observacao }}</td>
           <td>{{ despesa.valor }}</td>
           <td>
-            <button @click="deletar(despesa)" class="btn btn-outline-danger btn-sm">
+            <button @click="deletar(despesa)" class="btn btn-danger btn-sm">
               Apagar
             </button>
           </td>
