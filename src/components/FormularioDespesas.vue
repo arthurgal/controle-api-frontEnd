@@ -27,7 +27,7 @@
     <div class="form-group">
       <label for="exampleFormControlInput1">Valor da Despesa</label>
       <input
-        type="number"
+        type="text"
         min="0"
         step=".01"
         class="form-control"
@@ -79,6 +79,7 @@ export default {
 <style scoped>
 
   h1{
+    color: blueviolet;
     padding: 2rem;
     border-bottom: solid 3px rgb(237, 237, 237);
     text-align: center;

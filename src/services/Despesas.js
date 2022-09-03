@@ -12,6 +12,10 @@ export default {
 
     deletar: (id) => {
         return http.delete('despesa?id='+ id, {data: id})
+    },
+
+    total: () => {
+        return http.get('despesa/soma');
     }
 
 }

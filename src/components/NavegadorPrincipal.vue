@@ -22,9 +22,9 @@ export default {
 
 <style scoped>
 .navBar {
+  height: 100vh;
   background-color: #222222;
   text-align: center;
-  min-height: 737px;
 }
 
 .navBar h3{
@@ -35,6 +35,7 @@ export default {
 
 .navBar a{
   color: aliceblue;
+  font-size: 14px;
 }
 
 .navBar a:hover{
