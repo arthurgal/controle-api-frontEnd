@@ -4,7 +4,7 @@
     <ul class="nav flex-column">
       
       <li class="nav-item">
-        <a class="nav-link" href="#">Despesas</a>
+        <a class="nav-link" href="http://localhost:8081/despesa">Despesas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Receita</a>
@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .navBar {
-  height: 100vh;
+  height: 980px;
   background-color: #222222;
   text-align: center;
 }

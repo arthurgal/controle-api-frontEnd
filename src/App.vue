@@ -36,7 +36,4 @@ export default {
 </script>
 
 <style>
-.row{
-  padding: 0%;
-}
 </style>
