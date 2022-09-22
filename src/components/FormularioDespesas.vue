@@ -67,10 +67,13 @@ export default {
   
   methods:{
     salvar(){
-      Despesas.salvar(this.despesa).then(() =>{
-        window.location.reload();
-
-      })
+      if(this.despesa.valor <= 0 || this.despesa.nome == "" || this.despesa.observacao == ""){
+        alert("Valor invalido!")
+      }else{
+        Despesas.salvar(this.despesa).then(() =>{
+          window.location.reload();
+        })
+      }
     }
   },
 };
