@@ -11,12 +11,20 @@
       </li>
       
     </ul>
+    <div class="carteira">
+      <CarteiraVirtual/>
+    </div>
   </div>
 </template>
 
 <script>
+import CarteiraVirtual from './CarteiraVirtual.vue'
 export default {
   name: "NavegadorPrincipal",
+
+  components:{
+    CarteiraVirtual
+  }
 };
 </script>
 
@@ -41,4 +49,5 @@ export default {
 .navBar a:hover{
   color: blueviolet;
 }
+
 </style>
