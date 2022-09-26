@@ -14,7 +14,7 @@
           <td>{{ despesa.nome }}</td>
           <td>{{ despesa.dataDeCadastro }}</td>
           <td>{{ despesa.observacao }}</td>
-          <td>{{ despesa.valor }} R$</td>
+          <td>{{ despesa.valor.toFixed(2) }} R$</td>
           <td>
             <button @click="deletar(despesa)" class="btn btn-sm">Apagar</button>
           </td>
@@ -22,7 +22,7 @@
       </tbody>
     </table>
     <div class="conteudo-total">
-      <p>Total = {{ soma }} R$</p>
+      <p>Total = {{ soma.toFixed(2) }} R$</p>
     </div>
   </div>
 </template>
