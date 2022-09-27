@@ -1,37 +1,60 @@
 <template>
   <div>
     <div class="cadastra-saldo">
-      <div class="form-group">
-        <label for="exampleInputPassword1">Diga seu Saldo</label>
-        <div class="saldo-botao">
-          <input
-            type="text"
-            class="form-control border border-success rounded"
-            id="exampleInputPassword1"
-            v-model="saldo.valor"
-          />
-          <button type="button" class="btn btn-outline-success btn-sm">Enviar</button>
-
-
+      <form class="formulario" @submit.prevent="salvar">
+        <div class="form-group">
+          <label for="exampleInputPassword1">Diga seu Saldo</label>
+          <div class="saldo-botao">
+            <input
+              type="text"
+              class="form-control border border-success rounded"
+              id="exampleInputPassword1"
+              v-model="saldo.valor"
+            />
+            <button type="button" class="btn btn-outline-success btn-sm">
+              Enviar
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
     <div class="carteira">
       <h4 class="titulo-carteira">Carteira Virtual</h4>
-      <p class="border border-success rounded">R$ = {{saldo.valor}} </p>
+      <p class="border border-success rounded">R$ = {{ total }}</p>
     </div>
   </div>
 </template>
 
 <script>
+import Receita from "@/services/Receita";
 export default {
   name: "CarteiraVirtual",
-  data(){
-    return{
-        saldo :{
-            valor:0
-        }
-    }
+  data() {
+    return {
+      saldo: {
+        valor: 0.0,
+
+      },
+      total: 0.0,
+    };
+  },
+
+  methods: {
+    salvar() {
+      Receita.salvar(this.saldo).then(() => {
+        window.location.reload();
+      });
+    },
+
+    somaTotal() {
+      Receita.total().then((resposta) => {
+        this.total = resposta.data;
+      });
+    },
+  },
+
+  mounted(){
+    this.somaTotal();
   }
 };
 </script>
@@ -44,10 +67,9 @@ export default {
   height: 50%;
 }
 
-.saldo-botao{
-    display: flex;
-    justify-content: space-around;
-    
+.saldo-botao {
+  display: flex;
+  justify-content: space-around;
 }
 
 .carteira {
