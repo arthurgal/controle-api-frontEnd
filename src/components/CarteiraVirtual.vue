@@ -11,7 +11,7 @@
               id="exampleInputPassword1"
               v-model="saldo.valor"
             />
-            <button type="button" class="btn btn-outline-success btn-sm">
+            <button class="btn btn-outline-success btn-sm " type="submit" value="Submit">
               Enviar
             </button>
           </div>

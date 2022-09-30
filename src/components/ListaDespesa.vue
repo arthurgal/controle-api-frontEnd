@@ -22,7 +22,7 @@
       </tbody>
     </table>
     <div class="conteudo-total">
-      <p>Total = {{ soma.toFixed(2) }} R$</p>
+      <p :class="{'conteudo-total-g': classVar, 'conteudo-total-p': !classVar}">Total = {{ soma }} R$</p>
     </div>
   </div>
 </template>
@@ -35,20 +35,34 @@ export default {
     return {
       despesas: [],
       soma: 0,
+      classVar:'conteudo-total-p'
     };
   },
   methods: {
-    listar() {
-      Despesa.listar().then((resposta) => {
-        this.despesas = resposta.data;
-        this.total();
-      });
+    async listar() {
+      const resposta = await Despesa.listar()
+      this.despesas = resposta.data;
+      await this.total();
+      const a = this.soma === 500
+      //console.log(this.soma)
+      //console.log('this.soma === 500 = ', a)
+      this.classVar = a
+      // .then((resposta) => {
+      //   this.despesas = resposta.data;
+      //   await this.total();
+      //   this.classVar = this.soma.toFixed(2) === 500
+      // });
     },
 
-    total() {
-      Despesa.total().then((resposta) => {
-        this.soma = resposta.data;
-      });
+    async total() {
+      const resp = await Despesa.total()
+      this.soma = resp.data;
+      this.trocaCor();
+      // Despesa.total().then((resposta) => {
+      //   this.soma = resposta.data;
+      //   this.trocaCor();
+        
+      // });
     },
 
     deletar(despesa) {
@@ -56,6 +70,16 @@ export default {
         this.listar();
       });
     },
+
+    trocaCor(){
+      console.log('teste')
+      console.log(this.classVar)
+      console.log(this.soma)
+      if(this.soma === 500){
+        this.classVar === 'conteudo-total-g';
+        console.log(this.classVar)
+      }
+    }
   },
   mounted() {
     this.listar();
@@ -91,11 +115,19 @@ table {
   margin-bottom: 30px;
 }
 
-.conteudo-total p {
+.conteudo-total-p {
   border-radius:10px;
   font-size: 16px;
   padding: 5px;
   background-color: blueviolet;
+  color: #fff;
+}
+
+.conteudo-total-g {
+  border-radius:10px;
+  font-size: 16px;
+  padding: 5px;
+  background-color: rgb(21, 160, 9);
   color: #fff;
 }
 </style>
