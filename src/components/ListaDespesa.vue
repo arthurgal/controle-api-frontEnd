@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="div-tabela">
     <table class="table table-striped">
       <thead>
         <tr>
+          <th></th>
           <th>Nome</th>
           <th>Data de Cadastro</th>
           <th>Descrição</th>
@@ -11,6 +12,12 @@
       </thead>
       <tbody>
         <tr v-for="despesa of despesas" :key="despesa.id">
+          <div>
+            <td><div v-if="despesa.tipoDespesa === 'Lazer'" :class="despesaLazer"></div></td>
+            <td><div v-if="despesa.tipoDespesa === 'Alimentacao'" :class="despesaAlimentacao"></div></td>
+            <td><div v-if="despesa.tipoDespesa === 'Emergencia'" :class="despesaEmergencia"></div></td>
+            <td><div v-if="despesa.tipoDespesa === 'Despesas Fixas'" :class="despesaFixa"></div></td>
+          </div>
           <td>{{ despesa.nome }}</td>
           <td>{{ despesa.dataDeCadastro }}</td>
           <td>{{ despesa.observacao }}</td>
@@ -21,7 +28,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="conteudo-total">
+    <div class="conteudo-total div-tabela">
       <p :class="{'conteudo-total-g': classVar, 'conteudo-total-p': !classVar}">Total = {{ soma }} R$</p>
     </div>
   </div>
@@ -34,6 +41,10 @@ export default {
   data() {
     return {
       despesas: [],
+      despesaLazer: 'style-lazer',
+      despesaFixa: 'style-despesas-fixa',
+      despesaEmergencia: 'style-emergencia',
+      despesaAlimentacao: 'style-alimentacao',
       soma: 0,
       classVar:'conteudo-total-p'
     };
@@ -88,7 +99,7 @@ export default {
 </script>
 
 <style scoped>
-div {
+.div-tabela {
   width: 70%;
   padding-top: 1rem;
   margin: auto;
@@ -129,5 +140,37 @@ table {
   padding: 5px;
   background-color: rgb(21, 160, 9);
   color: #fff;
+}
+
+.style-lazer{
+  color: whitesmoke;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.style-despesas-fixa{
+  color: whitesmoke;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: blue;
+}
+
+.style-emergencia{
+  color: whitesmoke;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.style-alimentacao{
+  color: whitesmoke;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: yellow;
 }
 </style>

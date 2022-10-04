@@ -47,7 +47,8 @@
       >
 
         <option value="Lazer">Lazer</option>
-        <option value="Comida">Comida</option>
+        <option value="Alimentacao">Alimentação</option>
+        <option value="Despesas Fixas">Despesas fixas</option>
         <option value="Emergencia">Emergencia</option>
       </select>
     </div>
