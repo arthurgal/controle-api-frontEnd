@@ -3,7 +3,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th></th>
+          <th>Tipo Despesa</th>
           <th>Nome</th>
           <th>Data de Cadastro</th>
           <th>Descrição</th>
@@ -29,7 +29,9 @@
       </tbody>
     </table>
     <div class="conteudo-total div-tabela">
-      <p :class='classVar'>Total = {{ soma }} R$</p>
+      <div v-if="this.soma >= 0 && this.soma < 1700" :class="podeGastar"><p>Total = {{ soma }} R$</p></div>
+      <div v-if="this.soma === 1700" :class="naoPodeGastar"><p>Total = {{ soma }} R$</p></div>
+      <div v-if="this.soma > 1700 " :class="passouDoLimite"><p>Total = {{ soma }} R$</p></div>
     </div>
   </div>
 </template>
@@ -46,7 +48,9 @@ export default {
       despesaEmergencia: 'style-emergencia',
       despesaAlimentacao: 'style-alimentacao',
       soma: 0,
-      classVar:'conteudo-total-r'
+      podeGastar:'conteudo-total-r',
+      naoPodeGastar: 'conteudo-total-l',
+      passouDoLimite: 'conteudo-total-v'
     };
   },
   methods: {
@@ -129,25 +133,28 @@ table {
 .conteudo-total-l {
   border-radius:10px;
   font-size: 16px;
-  padding: 5px;
+  padding: 1px;
   background-color: rgb(250, 88, 29);
   color: #fff;
+  height: 30px;
 }
 
 .conteudo-total-r {
   border-radius:10px;
   font-size: 16px;
-  padding: 5px;
+  padding: 1px;
   background-color: blueviolet;
   color: #fff;
+  height: 30px;
 }
 
 .conteudo-total-v {
   border-radius:10px;
   font-size: 16px;
-  padding: 5px;
+  padding: 1px;
   background-color: red;
   color: #fff;
+  height: 30px;
 }
 
 .style-lazer{
