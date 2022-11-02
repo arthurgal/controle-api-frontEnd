@@ -13,10 +13,10 @@
       <tbody>
         <tr v-for="despesa of despesas" :key="despesa.id">
           <div>
-            <td><div v-if="despesa.tipoDespesa === 'Lazer'" :class="despesaLazer"></div></td>
-            <td><div v-if="despesa.tipoDespesa === 'Alimentacao'" :class="despesaAlimentacao"></div></td>
-            <td><div v-if="despesa.tipoDespesa === 'Emergencia'" :class="despesaEmergencia"></div></td>
-            <td><div v-if="despesa.tipoDespesa === 'Despesas Fixas'" :class="despesaFixa"></div></td>
+            <td><div v-show="despesa.tipoDespesa === 'Lazer'" :class="despesaLazer"></div></td>
+            <td><div v-show="despesa.tipoDespesa === 'Alimentacao'" :class="despesaAlimentacao"></div></td>
+            <td><div v-show="despesa.tipoDespesa === 'Emergencia'" :class="despesaEmergencia"></div></td>
+            <td><div v-show="despesa.tipoDespesa === 'Despesas Fixas'" :class="despesaFixa"></div></td>
           </div>
           <td>{{ despesa.nome }}</td>
           <td>{{ despesa.dataDeCadastro }}</td>
@@ -30,8 +30,8 @@
     </table>
     <div class="conteudo-total div-tabela">
       <div v-if="this.soma >= 0 && this.soma < 1700" :class="podeGastar"><p>Total = {{ soma }} R$</p></div>
-      <div v-if="this.soma === 1700" :class="naoPodeGastar"><p>Total = {{ soma }} R$</p></div>
-      <div v-if="this.soma > 1700 " :class="passouDoLimite"><p>Total = {{ soma }} R$</p></div>
+      <div v-if="this.soma === 1700" :class="naoPodeGastar"><p>Total = {{ soma  }} R$</p></div>
+      <div v-if="this.soma > 1700 " :class="passouDoLimite"><p>Total = {{ soma  }} R$</p></div>
     </div>
   </div>
 </template>
@@ -47,7 +47,7 @@ export default {
       despesaFixa: 'style-despesas-fixa',
       despesaEmergencia: 'style-emergencia',
       despesaAlimentacao: 'style-alimentacao',
-      soma: 0,
+      soma: 0.0,
       podeGastar:'conteudo-total-r',
       naoPodeGastar: 'conteudo-total-l',
       passouDoLimite: 'conteudo-total-v'
@@ -58,26 +58,16 @@ export default {
       const resposta = await Despesa.listar()
       this.despesas = resposta.data;
       await this.total();
-      //const a = this.soma === 500
-      //console.log(this.soma)
-      //console.log('this.soma === 500 = ', a)
-      //this.classVar = a
-      // .then((resposta) => {
-      //   this.despesas = resposta.data;
-      //   await this.total();
-      //   this.classVar = this.soma.toFixed(2) === 500
-      // });
     },
 
     async total() {
       const resp = await Despesa.total()
       this.soma = resp.data;
-      //this.trocaCor();
-      // Despesa.total().then((resposta) => {
-      //   this.soma = resposta.data;
-      //   this.trocaCor();
-        
-      // });
+      if(!this.soma){
+        this.soma = 0.0;
+        console.log("Entrou")
+      }
+      console.log("retorna isso: " + this.soma);
     },
 
     deletar(despesa) {
@@ -86,15 +76,6 @@ export default {
       });
     },
 
-    //trocaCor(){
-      //console.log('teste')
-      //console.log(this.classVar)
-      //console.log(this.soma)
-      //if(this.soma <= 500){
-        //this.classVar === 'conteudo-total-r'
-        //console.log('to no if')
-     // }
-    //}
   },
   mounted() {
     this.listar();
@@ -157,8 +138,10 @@ table {
   height: 30px;
 }
 
+
 .style-lazer{
   color: whitesmoke;
+  margin-left: 5rem;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -167,6 +150,7 @@ table {
 
 .style-despesas-fixa{
   color: whitesmoke;
+  margin-left: 5rem;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -175,6 +159,7 @@ table {
 
 .style-emergencia{
   color: whitesmoke;
+  margin-left: 5rem;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -183,6 +168,7 @@ table {
 
 .style-alimentacao{
   color: whitesmoke;
+  margin-left: 5rem;
   width: 20px;
   height: 20px;
   border-radius: 50%;

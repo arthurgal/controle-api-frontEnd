@@ -1,4 +1,7 @@
 <template>
+<h3 class="titulo">
+    Legenda - Tipo Despesa
+</h3>
   <div class="legenda">
     <div class="legenda-itens">
       <div class="style-lazer"></div>
@@ -26,6 +29,12 @@ export default {
 </script>
 
 <style>
+
+.titulo{
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 16px;
+}
 
 .style-lazer{
   color: whitesmoke;
@@ -69,6 +78,6 @@ export default {
 }
 .legenda-itens {
   display: flex;
-  margin: 30px;
+  margin: 10px;
 }
 </style>
