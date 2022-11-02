@@ -29,7 +29,7 @@
       </tbody>
     </table>
     <div class="conteudo-total div-tabela">
-      <p :class="{'conteudo-total-g': classVar, 'conteudo-total-p': !classVar}">Total = {{ soma }} R$</p>
+      <p :class='classVar'>Total = {{ soma }} R$</p>
     </div>
   </div>
 </template>
@@ -46,7 +46,7 @@ export default {
       despesaEmergencia: 'style-emergencia',
       despesaAlimentacao: 'style-alimentacao',
       soma: 0,
-      classVar:'conteudo-total-p'
+      classVar:'conteudo-total-r'
     };
   },
   methods: {
@@ -54,10 +54,10 @@ export default {
       const resposta = await Despesa.listar()
       this.despesas = resposta.data;
       await this.total();
-      const a = this.soma === 500
+      //const a = this.soma === 500
       //console.log(this.soma)
       //console.log('this.soma === 500 = ', a)
-      this.classVar = a
+      //this.classVar = a
       // .then((resposta) => {
       //   this.despesas = resposta.data;
       //   await this.total();
@@ -68,7 +68,7 @@ export default {
     async total() {
       const resp = await Despesa.total()
       this.soma = resp.data;
-      this.trocaCor();
+      //this.trocaCor();
       // Despesa.total().then((resposta) => {
       //   this.soma = resposta.data;
       //   this.trocaCor();
@@ -82,15 +82,15 @@ export default {
       });
     },
 
-    trocaCor(){
-      console.log('teste')
-      console.log(this.classVar)
-      console.log(this.soma)
-      if(this.soma === 500){
-        this.classVar === 'conteudo-total-g';
-        console.log(this.classVar)
-      }
-    }
+    //trocaCor(){
+      //console.log('teste')
+      //console.log(this.classVar)
+      //console.log(this.soma)
+      //if(this.soma <= 500){
+        //this.classVar === 'conteudo-total-r'
+        //console.log('to no if')
+     // }
+    //}
   },
   mounted() {
     this.listar();
@@ -126,7 +126,15 @@ table {
   margin-bottom: 30px;
 }
 
-.conteudo-total-p {
+.conteudo-total-l {
+  border-radius:10px;
+  font-size: 16px;
+  padding: 5px;
+  background-color: rgb(250, 88, 29);
+  color: #fff;
+}
+
+.conteudo-total-r {
   border-radius:10px;
   font-size: 16px;
   padding: 5px;
@@ -134,11 +142,11 @@ table {
   color: #fff;
 }
 
-.conteudo-total-g {
+.conteudo-total-v {
   border-radius:10px;
   font-size: 16px;
   padding: 5px;
-  background-color: rgb(21, 160, 9);
+  background-color: red;
   color: #fff;
 }
 
@@ -147,7 +155,7 @@ table {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: red;
+  background-color: rgb(186, 251, 136);
 }
 
 .style-despesas-fixa{
@@ -155,7 +163,7 @@ table {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: blue;
+  background-color: rgb(251, 213, 132);
 }
 
 .style-emergencia{
@@ -163,7 +171,7 @@ table {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: green;
+  background-color: rgb(251, 131, 131);
 }
 
 .style-alimentacao{
@@ -171,6 +179,6 @@ table {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: yellow;
+  background-color: rgb(127, 230, 251);
 }
 </style>

@@ -11,6 +11,9 @@
         <div>
           <ListaDespesa/>
         </div>
+        <div>
+          <LegendaBaixo/>
+        </div>
       </div>
     </div>
   </div>
@@ -20,12 +23,15 @@
 import NavegadorPrincipal from "./components/NavegadorPrincipal.vue";
 import FormularioDespesas from "./components/FormularioDespesas.vue";
 import ListaDespesa from "./components/ListaDespesa.vue";
+import LegendaBaixo from "./components/LegendaBaixo.vue";
 
 export default {
   components: {
     NavegadorPrincipal,
     FormularioDespesas,
     ListaDespesa,
+    LegendaBaixo
+    
   },
   methods: {
     listarDespesas() {
