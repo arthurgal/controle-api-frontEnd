@@ -13,10 +13,10 @@
       <tbody>
         <tr v-for="despesa of despesas" :key="despesa.id">
           <div>
-            <td><div v-show="despesa.tipoDespesa === 'Lazer'" :class="despesaLazer"></div></td>
-            <td><div v-show="despesa.tipoDespesa === 'Alimentacao'" :class="despesaAlimentacao"></div></td>
-            <td><div v-show="despesa.tipoDespesa === 'Emergencia'" :class="despesaEmergencia"></div></td>
-            <td><div v-show="despesa.tipoDespesa === 'Despesas Fixas'" :class="despesaFixa"></div></td>
+            <td v-show="despesa.tipoDespesa === 'Lazer'" :class="despesaLazer"></td>
+            <td v-show="despesa.tipoDespesa === 'Alimentacao'" :class="despesaAlimentacao"></td>
+            <td v-show="despesa.tipoDespesa === 'Emergencia'" :class="despesaEmergencia"></td>
+            <td v-show="despesa.tipoDespesa === 'Despesas Fixas'" :class="despesaFixa"></td>
           </div>
           <td>{{ despesa.nome }}</td>
           <td>{{ despesa.dataDeCadastro }}</td>

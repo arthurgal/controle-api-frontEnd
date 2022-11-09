@@ -1,16 +1,6 @@
 <template>
   <div class="navBar">
     <h3>Controle</h3>
-    <ul class="nav flex-column">
-      
-      <li class="nav-item">
-        <a class="nav-link" href="http://localhost:8081/despesa">Despesas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Receita</a>
-      </li>
-      
-    </ul>
     <div class="carteira">
       <CarteiraVirtual/>
     </div>
@@ -48,6 +38,7 @@ export default {
 
 .navBar a:hover{
   color: blueviolet;
+  background-color: #3e3e3e;
 }
 
 </style>
