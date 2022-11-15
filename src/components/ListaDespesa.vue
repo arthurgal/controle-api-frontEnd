@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <tr v-for="despesa of despesas" :key="despesa.id">
-          <div>
+          <div class="bola-tipo-despesa">
             <td v-show="despesa.tipoDespesa === 'Lazer'" :class="despesaLazer"></td>
             <td v-show="despesa.tipoDespesa === 'Alimentacao'" :class="despesaAlimentacao"></td>
             <td v-show="despesa.tipoDespesa === 'Emergencia'" :class="despesaEmergencia"></td>
@@ -140,8 +140,6 @@ table {
 
 
 .style-lazer{
-  color: whitesmoke;
-  margin-left: 5rem;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -149,8 +147,6 @@ table {
 }
 
 .style-despesas-fixa{
-  color: whitesmoke;
-  margin-left: 5rem;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -158,8 +154,6 @@ table {
 }
 
 .style-emergencia{
-  color: whitesmoke;
-  margin-left: 5rem;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -167,11 +161,17 @@ table {
 }
 
 .style-alimentacao{
-  color: whitesmoke;
+  
   margin-left: 5rem;
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: rgb(127, 230, 251);
+}
+
+.bola-tipo-despesa{
+  padding-top: 20px;
+  padding-left: 50px;
+  height: 65px;
 }
 </style>
